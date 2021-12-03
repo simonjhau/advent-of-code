@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const data = fs.readFileSync('input.txt', 'utf8');
 const depths = data.split('\n').map((depth) => parseInt(depth));

@@ -1,8 +1,8 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const input = fs.readFileSync('input.txt', 'utf8');
 const commands = input.split('\n').map((command) => {
-  splitCommand = command.split(' ');
+  const splitCommand = command.split(' ');
   return { direction: splitCommand[0], amount: parseInt(splitCommand[1]) };
 });
 
