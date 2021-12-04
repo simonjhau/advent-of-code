@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 let drawnNumbers = [];
 const boards = [];
 let boardIdx = -1;
-const winners = [];
 
 // Parse file
 let lineNum = 0;
@@ -25,7 +24,7 @@ for await (const line of rl) {
     boardIdx++;
   } else {
     // Parse boards
-    const row = boards[boardIdx].board.push(
+    boards[boardIdx].board.push(
       line
         .trim()
         .split(/\s+/)
@@ -42,11 +41,24 @@ for await (const line of rl) {
 
 // Mark boards when a number is drawn
 const markBoards = (boards, drawnNumber) => {
-  for (const board of boards) {
-    for (const row of board.board) {
-      for (let item of row) {
-        if (item.value === drawnNumber) {
-          item.marked = true;
+  for (let boardIdx = 0; boardIdx < boards.length; boardIdx++) {
+    const board = boards[boardIdx];
+    if (!board.won) {
+      for (let rowIdx = 0; rowIdx < board.board.length; rowIdx++) {
+        for (let colIdx = 0; colIdx < board.board.length; colIdx++) {
+          const cell = board.board[rowIdx][colIdx];
+          if (cell.value === drawnNumber) {
+            cell.marked = true;
+
+            // Check if board is a winner
+            if (checkWinner(board, rowIdx, colIdx) === true) {
+              board.won = true;
+              winningBoards.push({
+                boardNum: boardIdx + 1,
+                score: winningScore(board, drawnNumber),
+              });
+            }
+          }
         }
       }
     }
@@ -67,59 +79,38 @@ const winningScore = (board, drawnNumber) => {
 };
 
 // Check for a winner
-const checkWinner = (boards, drawnNumber) => {
-  for (let boardIdx = 0; boardIdx < boards.length; boardIdx++) {
-    const board = boards[boardIdx];
-    let winningBoard = false;
+const winningBoards = [];
+const checkWinner = (board, markedRowIdx, markedColIdx) => {
+  let winningBoard = true;
 
-    if (board.won === false) {
-      // Check for winning row
-      for (
-        let rowIdx = 0;
-        rowIdx < board.board.length && !winningBoard;
-        rowIdx++
-      ) {
-        winningBoard = true;
-        for (let colIdx = 0; colIdx < board.board.length; colIdx++) {
-          if (board.board[rowIdx][colIdx].marked === false) {
-            winningBoard = false;
-            break;
-          }
-        }
-      }
+  // Check for winning row
+  for (let colIdx = 0; colIdx < board.board.length; colIdx++) {
+    if (board.board[markedRowIdx][colIdx].marked === false) {
+      winningBoard = false;
+      break;
+    }
+  }
 
-      if (!winningBoard) {
-        // Check for winning column
-        for (
-          let colIdx = 0;
-          colIdx < board.board.length && !winningBoard;
-          colIdx++
-        ) {
-          winningBoard = true;
-          for (let rowIdx = 0; rowIdx < board.board.length; rowIdx++) {
-            if (board.board[rowIdx][colIdx].marked === false) {
-              winningBoard = false;
-              break;
-            }
-          }
-        }
-      }
-
-      if (winningBoard) {
-        board.won = true;
-        winners.push({
-          boardNum: boardIdx + 1,
-          score: winningScore(board, drawnNumber),
-        });
+  if (!winningBoard) {
+    // Check for winning column
+    winningBoard = true;
+    for (let rowIdx = 0; rowIdx < board.board.length; rowIdx++) {
+      if (board.board[rowIdx][markedColIdx].marked === false) {
+        winningBoard = false;
+        break;
       }
     }
   }
+
+  return winningBoard;
 };
 
 // Let's play bingo!
 for (const drawnNumber of drawnNumbers) {
   markBoards(boards, drawnNumber);
-  checkWinner(boards, drawnNumber);
+  if (winningBoards.length >= boards.length) {
+    break;
+  }
 }
 
-console.log(util.inspect(winners, { maxArrayLength: null }));
+console.log(util.inspect(winningBoards, { maxArrayLength: null }));
