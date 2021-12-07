@@ -6,7 +6,7 @@ const positions = input.split(',').map((item) => parseInt(item));
 const getFuelUsage = (positions, pos) => {
   let fuel = 0;
   for (const position of positions) {
-    let difference = Math.abs(position - pos);
+    const difference = Math.abs(position - pos);
     // 1 + 2 + 3 + ... + N can be simplified to (N - 1) / 2 * N
     fuel += ((difference + 1) / 2) * difference;
   }
