@@ -4,4 +4,4 @@ DayQuatroSolution = BingoCheater("input.txt")
 partUnoAnswer = DayQuatroSolution.bossFinalScore
 partDosAnswer = DayQuatroSolution.pussFinalScore
 
-print("Day 3\n", "\tPart 1 answer: ", partUnoAnswer, "\n\tPart 2 answer: ", partDosAnswer)
+print("Day 4\n", "\tPart 1 answer: ", partUnoAnswer, "\n\tPart 2 answer: ", partDosAnswer)
