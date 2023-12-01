@@ -15,8 +15,8 @@ with open(path.join(basepath, "input.txt")) as f:
             cur += int(line.strip())
 
 heapq.heapify(calories)
-res = []
+calorieSum = 0
 for i in range(3):
-    res.append(-heapq.heappop(calories))
+    calorieSum += -heapq.heappop(calories)
 
-print(f"Top 3 in total: {sum(res)}")
+print(f"Top 3 in total: {calorieSum}")
