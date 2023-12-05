@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.AbstractMap;
+import java.util.List;
 import java.util.Map;
 
 public class Day1 {
@@ -24,6 +26,7 @@ public class Day1 {
 
     static int part1(String[] lines) {
         int calibrationValuesSum = 0;
+
         for (String line : lines) {
             int i = 0;
             while (!Character.isDigit(line.charAt(i))) {
@@ -40,39 +43,31 @@ public class Day1 {
             int calibrationValue = first * 10 + last;
             calibrationValuesSum += calibrationValue;
         }
+
         return calibrationValuesSum;
     }
 
-    static String[] numbers = {"one", "two", "three", "four", "five",
-            "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7"
-            , "8", "9",};
-    static Map<String, Integer> mapping = Map.of(
-            "one",
-            1,
-            "two",
-            2,
-            "three",
-            3,
-            "four",
-            4,
-            "five",
-            5,
-            "six",
-            6,
-            "seven",
-            7,
-            "eight",
-            8,
-            "nine",
-            9
+    static final Map<String, Integer> mapping = Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("1", 1),
+            new AbstractMap.SimpleEntry<>("2", 2),
+            new AbstractMap.SimpleEntry<>("3", 3),
+            new AbstractMap.SimpleEntry<>("4", 4),
+            new AbstractMap.SimpleEntry<>("5", 5),
+            new AbstractMap.SimpleEntry<>("6", 6),
+            new AbstractMap.SimpleEntry<>("7", 7),
+            new AbstractMap.SimpleEntry<>("8", 8),
+            new AbstractMap.SimpleEntry<>("9", 9),
+            new AbstractMap.SimpleEntry<>("one", 1),
+            new AbstractMap.SimpleEntry<>("two", 2),
+            new AbstractMap.SimpleEntry<>("three", 3),
+            new AbstractMap.SimpleEntry<>("four", 4),
+            new AbstractMap.SimpleEntry<>("five", 5),
+            new AbstractMap.SimpleEntry<>("six", 6),
+            new AbstractMap.SimpleEntry<>("seven", 7),
+            new AbstractMap.SimpleEntry<>("eight", 8),
+            new AbstractMap.SimpleEntry<>("nine", 9)
     );
-
-    static int getDigit(String s) {
-        if (s.length() == 1) {
-            return s.charAt(0) - '0';
-        }
-        return mapping.get(s);
-    }
+    static final List<String> numbers = mapping.keySet().stream().toList();
 
     static int part2(String[] lines) {
         int calibrationValuesSum = 0;
@@ -84,7 +79,7 @@ public class Day1 {
             while (first == -1) {
                 for (String number : numbers) {
                     if (line.startsWith(number, i)) {
-                        first = getDigit(number);
+                        first = mapping.get(number);
                         break;
                     }
                 }
@@ -95,7 +90,7 @@ public class Day1 {
             while (last == -1) {
                 for (String number : numbers) {
                     if (line.endsWith(number)) {
-                        last = getDigit(number);
+                        last = mapping.get(number);
                         break;
                     }
                 }
@@ -105,6 +100,7 @@ public class Day1 {
             int calibrationValue = first * 10 + last;
             calibrationValuesSum += calibrationValue;
         }
+
         return calibrationValuesSum;
     }
 }
