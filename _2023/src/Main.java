@@ -4,13 +4,18 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Day day = new Day4();
+        Day day = new Day6();
+        boolean test = false;
 
-        String[] lines =
-                Files.readAllLines(Paths.get("./_2023/input/" + day.getClass().getSimpleName() + ".txt")).toArray(
-                new String[0]);
+        String inputFileName = "./_2023/input/" + day
+                .getClass()
+                .getSimpleName() + (test ? "test" : "") + ".txt";
 
-        System.out.println("Running " + day.getClass().getSimpleName());
+        String[] lines = Files
+                .readAllLines(Paths.get(inputFileName))
+                .toArray(new String[0]);
+
+        System.out.println(day.getClass().getSimpleName());
 
         long start = System.nanoTime();
         int part1 = day.part1(lines);
