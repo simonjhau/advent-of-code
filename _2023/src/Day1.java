@@ -1,30 +1,9 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day1 {
-    public static void main(String[] args) throws IOException {
-        String[] lines = Files.readAllLines(Paths.get("./_2023/input/day1" +
-                ".txt")).toArray(
-                new String[0]);
-
-        long start = System.nanoTime();
-        int part1 = part1(lines);
-        long finish = System.nanoTime();
-        long timeElapsed = finish - start;
-        System.out.printf("Part 1: %d (%dus)\n", part1, timeElapsed / 1000);
-
-        start = System.nanoTime();
-        int part2 = part2(lines);
-        finish = System.nanoTime();
-        timeElapsed = finish - start;
-        System.out.printf("Part 2: %d (%dus)\n", part2, timeElapsed / 1000);
-    }
-
-    static int part1(String[] lines) {
+public class Day1 implements Day {
+    public int part1(String[] lines) {
         int calibrationValuesSum = 0;
 
         for (String line : lines) {
@@ -69,7 +48,7 @@ public class Day1 {
     );
     static final List<String> numbers = mapping.keySet().stream().toList();
 
-    static int part2(String[] lines) {
+    public int part2(String[] lines) {
         int calibrationValuesSum = 0;
 
         for (String line : lines) {

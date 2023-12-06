@@ -1,34 +1,14 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day4 {
-    public static void main(String[] args) throws IOException {
-        String[] lines = Files.readAllLines(Paths.get("./_2023/input/day4" + ".txt")).toArray(
-                new String[0]);
-
-        long start = System.nanoTime();
-        int part1 = part1(lines);
-        long finish = System.nanoTime();
-        long timeElapsed = finish - start;
-        System.out.printf("Part 1: %d (%dus)\n", part1, timeElapsed / 1000);
-
-        start = System.nanoTime();
-        int part2 = part2(lines);
-        finish = System.nanoTime();
-        timeElapsed = finish - start;
-        System.out.printf("Part 2: %d (%dus)\n", part2, timeElapsed / 1000);
-    }
-
-    static Set<Integer> getSetFromString(String s) {
+public class Day4 implements Day {
+    Set<Integer> getSetFromString(String s) {
         return Arrays.stream(s.trim().split("\\s+")).map(Integer::parseInt).collect(
                 Collectors.toSet());
     }
 
-    static int getNumMatchingNumbers(String line) {
+    int getNumMatchingNumbers(String line) {
         String[] cardSplit = line.split(":");
         String[] numberSplit = cardSplit[1].split("\\|");
         Set<Integer> winningNumbers = getSetFromString(numberSplit[0]);
@@ -37,7 +17,7 @@ public class Day4 {
         return myNumbers.size();
     }
 
-    static int part1(String[] lines) {
+    public int part1(String[] lines) {
         int totalScore = 0;
         for (String line : lines) {
             int numMatching = getNumMatchingNumbers(line);
@@ -49,7 +29,7 @@ public class Day4 {
         return totalScore;
     }
 
-    static int part2(String[] lines) {
+    public int part2(String[] lines) {
         int numOriginalCards = lines.length;
         int curCard = 1;
         int totalCards = numOriginalCards;
