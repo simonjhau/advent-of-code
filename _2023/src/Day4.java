@@ -2,10 +2,16 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Day4 implements Day {
+public class Day4 extends Day {
+    public Day4(String[] lines) {
+        super(lines);
+    }
+
     Set<Integer> getSetFromString(String s) {
-        return Arrays.stream(s.trim().split("\\s+")).map(Integer::parseInt).collect(
-                Collectors.toSet());
+        return Arrays
+                .stream(s.trim().split("\\s+"))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
     }
 
     int getNumMatchingNumbers(String line) {
@@ -17,7 +23,7 @@ public class Day4 implements Day {
         return myNumbers.size();
     }
 
-    public int part1(String[] lines) {
+    public int part1() {
         int totalScore = 0;
         for (String line : lines) {
             int numMatching = getNumMatchingNumbers(line);
@@ -29,7 +35,7 @@ public class Day4 implements Day {
         return totalScore;
     }
 
-    public int part2(String[] lines) {
+    public int part2() {
         int numOriginalCards = lines.length;
         int curCard = 1;
         int totalCards = numOriginalCards;

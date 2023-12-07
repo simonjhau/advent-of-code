@@ -1,5 +1,9 @@
-public class Day2 implements Day {
-    public int part1(String[] lines) {
+public class Day2 extends Day {
+    public Day2(String[] lines) {
+        super(lines);
+    }
+
+    public int part1() {
         int maxRed = 12;
         int maxGreen = 13;
         int maxBlue = 14;
@@ -50,7 +54,7 @@ public class Day2 implements Day {
         return sumOfIds;
     }
 
-    public int part2(String[] lines) {
+    public int part2() {
         int sumOfPowers = 0;
 
         for (String line : lines) {

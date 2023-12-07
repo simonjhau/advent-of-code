@@ -1,6 +1,10 @@
 import java.util.Arrays;
 
-public class Day6 implements Day {
+public class Day6 extends Day {
+    public Day6(String[] lines) {
+        super(lines);
+    }
+
     private long getTravelDistance(
             long time,
             long holdTime
@@ -63,7 +67,7 @@ public class Day6 implements Day {
         return maxHoldTime - minHoldTime + 1;
     }
 
-    public int part1(String[] lines) {
+    public int part1() {
         int[] times = Arrays
                 .stream(lines[0].split(":")[1].trim().split("\\s" + "+"))
                 .mapToInt(Integer::parseInt)
@@ -82,7 +86,7 @@ public class Day6 implements Day {
         return product;
     }
 
-    public int part2(String[] lines) {
+    public int part2() {
         int time = Integer.parseInt(lines[0].split(":")[1]
                 .trim()
                 .replace(" ", ""));

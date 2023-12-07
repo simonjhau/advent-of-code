@@ -2,8 +2,12 @@ import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day1 implements Day {
-    public int part1(String[] lines) {
+public class Day1 extends Day {
+    public Day1(String[] lines) {
+        super(lines);
+    }
+
+    public int part1() {
         int calibrationValuesSum = 0;
 
         for (String line : lines) {
@@ -48,7 +52,7 @@ public class Day1 implements Day {
     );
     static final List<String> numbers = mapping.keySet().stream().toList();
 
-    public int part2(String[] lines) {
+    public int part2() {
         int calibrationValuesSum = 0;
 
         for (String line : lines) {
