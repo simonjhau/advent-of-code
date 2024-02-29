@@ -10,7 +10,7 @@
 
 class Day {
 public:
-    Day(std::string inputFile);
+    Day(int dayNum, bool test);
 
     virtual ~Day() {};
 
@@ -20,8 +20,11 @@ public:
 
     std::vector <std::string> readFile();
 
+    int m_dayNum;
+
 protected:
-    std::string m_inputFile = "";
+    std::string m_inputFile;
+    bool m_test = false;
 };
 
 #endif //CPP_DAY_H

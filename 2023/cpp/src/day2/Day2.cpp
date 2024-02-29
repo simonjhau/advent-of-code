@@ -6,7 +6,7 @@
 
 #include "Day2.h"
 
-Day2::Day2() : Day("input/day2.txt") {};
+Day2::Day2() : Day(2, false) {};
 
 Day2::~Day2() {
 }
@@ -30,7 +30,9 @@ std::vector <std::string> split(const std::string &s, const std::string &delimit
 
 void print(const std::vector <std::string> &strings) {
     int numLines = static_cast<int>(strings.size());
-    for (int i = 0; i < numLines; i++) {
+    for (
+            int i = 0; i < numLines; i++
+            ) {
         std::cout << strings.at(i) << ", ";
     }
     std::cout << std::endl;
@@ -38,16 +40,22 @@ void print(const std::vector <std::string> &strings) {
 
 // trim from start (in place)
 inline void ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    }));
+    s.erase(
+            s.begin(), std::find_if(
+                    s.begin(), s.end(), [](unsigned char ch) {
+                        return !std::isspace(ch);
+                    }
+            ));
 }
 
 // trim from end (in place)
 inline void rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    }).base(), s.end());
+    s.erase(
+            std::find_if(
+                    s.rbegin(), s.rend(), [](unsigned char ch) {
+                        return !std::isspace(ch);
+                    }
+            ).base(), s.end());
 }
 
 inline void trim(std::string &s) {
@@ -61,7 +69,9 @@ int Day2::part1(std::vector <std::string> lines) {
     const int numBlue = 14;
     int sum = 0;
 
-    for (std::string line: lines) {
+    for (
+        std::string line: lines
+            ) {
         std::vector <std::string> gameSplit = split(line, ":");
         const int gameIdx = std::atoi(split(gameSplit.at(0), " ").at(1).c_str());
         const std::string gameString = gameSplit.at(1);
@@ -70,7 +80,9 @@ int Day2::part1(std::vector <std::string> lines) {
         bool possible = true;
 
         size_t numRounds = rounds.size();
-        for (size_t i = 0; i < numRounds && possible; i++) {
+        for (
+                size_t i = 0; i < numRounds && possible; i++
+                ) {
             int red = 0;
             int green = 0;
             int blue = 0;
@@ -78,7 +90,9 @@ int Day2::part1(std::vector <std::string> lines) {
             std::string round = rounds.at(i);
             std::vector <std::string> colours = split(round, ",");
 
-            for (std::string colourString: colours) {
+            for (
+                std::string colourString: colours
+                    ) {
                 trim(colourString);
                 std::vector <std::string> colour = split(colourString, " ");
                 if (0 == colour.at(1).compare("red")) {
@@ -114,7 +128,9 @@ int Day2::part1(std::vector <std::string> lines) {
 int Day2::part2(std::vector <std::string> lines) {
     int sum = 0;
 
-    for (std::string line: lines) {
+    for (
+        std::string line: lines
+            ) {
         std::vector <std::string> gameSplit = split(line, ":");
         const std::string gameString = gameSplit.at(1);
         std::vector <std::string> rounds = split(gameString, ";");
@@ -124,12 +140,16 @@ int Day2::part2(std::vector <std::string> lines) {
         int maxBlue = 0;
 
         size_t numRounds = rounds.size();
-        for (size_t i = 0; i < numRounds; i++) {
+        for (
+                size_t i = 0; i < numRounds; i++
+                ) {
 
             std::string round = rounds.at(i);
             std::vector <std::string> colours = split(round, ",");
 
-            for (std::string colourString: colours) {
+            for (
+                std::string colourString: colours
+                    ) {
                 trim(colourString);
                 std::vector <std::string> colour = split(colourString, " ");
                 if (0 == colour.at(1).compare("red")) {

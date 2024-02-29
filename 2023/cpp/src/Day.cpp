@@ -11,10 +11,16 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <sstream>
 
 #include "Day.h"
 
-Day::Day(std::string inputFile) : m_inputFile(inputFile) {}
+Day::Day(int dayNum, bool test) : m_dayNum(dayNum), m_test(test) {
+    std::string testStr = m_test ? "test" : "";
+    std::ostringstream oss;
+    oss << "input/Day" << m_dayNum << testStr << ".txt";
+    m_inputFile = oss.str();
+}
 
 std::vector <std::string> Day::readFile() {
     std::vector <std::string> lines;
