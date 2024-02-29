@@ -10,11 +10,18 @@
 
 class Day {
 public:
+    Day(std::string inputFile);
+
     virtual ~Day() {};
 
     virtual int part1(std::vector <std::string>) = 0;
 
     virtual int part2(std::vector <std::string>) = 0;
+
+    std::vector <std::string> readFile();
+
+protected:
+    std::string m_inputFile = "";
 };
 
 #endif //CPP_DAY_H

@@ -3,6 +3,8 @@
 
 #include "Day1.h"
 
+Day1::Day1() : Day("input/day1") {};
+
 Day1::~Day1() {}
 
 int Day1::part1(std::vector <std::string> lines) {

@@ -1,9 +1,3 @@
-//
-//  Day1.h
-//  advent-of-code-cpp
-//
-//  Created by Simon Au on 29/01/2024.
-//
 #include <vector>
 #include <string>
 
@@ -14,6 +8,8 @@
 
 class Day1 : public Day {
 public:
+    Day1();
+
     ~Day1();
 
     int part1(std::vector <std::string>);
