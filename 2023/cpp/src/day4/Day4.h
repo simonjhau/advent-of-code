@@ -1,5 +1,5 @@
-#ifndef Day3_h
-#define Day3_h
+#ifndef Day4_h
+#define Day4_h
 
 #include <stdio.h>
 #include <vector>
@@ -7,15 +7,15 @@
 
 #include "../Day.h"
 
-class Day3 : public Day {
+class Day4 : public Day {
 public:
-    Day3();
+    Day4();
 
-    ~Day3();
+    ~Day4();
 
     int part1(std::vector <std::string> lines);
 
     int part2(std::vector <std::string> lines);
 };
 
-#endif /* Day3_h */
+#endif /* Day4_h */

@@ -1,13 +1,9 @@
-//
-// Created by Simon Au on 29/02/2024.
-//
 #include <iostream>
-#include <fstream>
 
-#include "day3/Day3.h"
+#include "day4/Day4.h"
 
 int main() {
-    Day3 day = Day3();
+    Day4 day = Day4();
     std::vector <std::string> lines = day.readFile();
 
     std::cout << "Day " << day.m_dayNum << '\n';
