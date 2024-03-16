@@ -5,9 +5,9 @@
 
 Day1::Day1() : Day(1, false) {};
 
-Day1::~Day1() {}
+Day1::~Day1() = default;
 
-int Day1::part1(std::vector <std::string> lines) {
+int Day1::part1(std::vector<std::string> lines) {
     int sum = 0;
 
     for (
@@ -42,7 +42,7 @@ int Day1::part1(std::vector <std::string> lines) {
     return sum;
 }
 
-int Day1::part2(std::vector <std::string> lines) {
+int Day1::part2(std::vector<std::string> lines) {
     int sum = 0;
     std::string nums[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     int numsLength = 10;

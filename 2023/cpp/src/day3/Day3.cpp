@@ -133,9 +133,7 @@ int Day3::part2(std::vector<std::string> schematic) {
     }
 
     int sum = 0;
-    for (
-        auto& star: map
-            ) {
+    for (auto& star: map) {
         if (star.second.size() == 2) {
             sum += star.second[0] * star.second[1];
         }

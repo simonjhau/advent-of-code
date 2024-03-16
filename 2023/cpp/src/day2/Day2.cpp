@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cctype>
 #include <cstdlib>
 #include <algorithm>
 
@@ -8,7 +7,7 @@
 
 #include "../Utils.h"
 
-Day2::Day2() : Day(2, false) {};
+Day2::Day2() : Day(2, false) {}
 
 Day2::~Day2() = default;
 
