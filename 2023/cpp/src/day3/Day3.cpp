@@ -87,15 +87,13 @@ int Day3::part2(std::vector<std::string> schematic) {
     std::unordered_map<std::string, std::vector<int>> map;
 
     int numLines = static_cast<int>(schematic.size());
-    size_t width = schematic.at(0).length();
+    int width = (int) schematic.at(0).length();
     for (int i = 0; i < numLines; i++) {
         int num = 0;
         bool isAdjacentToStar = false;
         std::array<int, 2> starPos;
 
-        for (
-                int j = 0; j < width; j++
-                ) {
+        for (int j = 0; j < width; j++) {
             char c = schematic.at(i).at(j);
 
             if (std::isdigit(c)) {

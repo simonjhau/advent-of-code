@@ -16,11 +16,15 @@ public:
 
     std::vector<std::string> readFile();
 
-    int m_dayNum;
+    int getDay();
 
 protected:
     std::string m_inputFile;
     bool m_test = false;
+
+private:
+    int m_dayNum;
+
 };
 
 #endif //CPP_DAY_H

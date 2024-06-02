@@ -7,55 +7,33 @@ DEBUGFLAGS = -g -O0
 RELEASEFLAGS = -O3 -DNDEBUG
 
 # Directories
-SRCDIR = src
-DEBUGDIR = debug
-RELEASEDIR = release
+SRC = src
+BUILD = build
 
-# Find all .cpp files in src and its subdirectories
-SRCS = $(shell find $(SRCDIR) -type f -name '*.cpp')
+SRCS = $(shell find $(SRC) -name '*.cpp')
 
-# Transform the source file paths for object files in debug/release directories
-DEBUGOBJS = $(SRCS:$(SRCDIR)/%.cpp=$(DEBUGDIR)/%.o)
-RELEASEOBJS = $(SRCS:$(SRCDIR)/%.cpp=$(RELEASEDIR)/%.o)
+BUILDOBJS = $(patsubst $(SRC)/%.cpp, $(BUILD)/%.o, $(SRCS))
 
-# Executable targets
-DEBUGTARGET = $(DEBUGDIR)/app
-RELEASETARGET = $(RELEASEDIR)/app
+TARGET = $(BUILD)/app
 
-all: debug release
+.PHONY: all debug release clean
 
-setup_debug:
-	@mkdir -p $(DEBUGDIR)
+all: release
 
-setup_release:
-	@mkdir -p $(RELEASEDIR)
+debug: CXXFLAGS += $(DEBUGFLAGS)
+debug: $(TARGET)
 
-#---Debug---
-debug: setup_debug $(DEBUGTARGET)
-	@echo "Debug build complete."
+release: CXXFLAGS += $(RELEASEFLAGS)
+release: $(TARGET)
 
-# Link the debug object files to create the release executable
-$(DEBUGTARGET): $(DEBUGOBJS)
-	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -o $@ $^
+# Link the target executable
+$(TARGET): $(BUILDOBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Rule to compile source files to object files for the debug build
-$(DEBUGDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) $(DEBUGFLAGS) -c $< -o $@
+# Compile source files to object files
+$(BUILD)/%.o: $(SRC)/%.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-#---Release---
-release: setup_release $(RELEASETARGET)
-	@echo "Release build complete."
-
-# Link the release object files to create the release executable
-$(RELEASETARGET): $(RELEASEOBJS)
-	$(CXX) $(CXXFLAGS) $(RELEASEFLAGS) -o $@ $^
-
-# Rule to compile source files to object files for the release build
-$(RELEASEDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) $(RELEASEFLAGS) -c $< -o $@
-
-# Clean
 clean:
-	rm -rf $(DEBUGDIR) $(RELEASEDIR)
+	rm -rf $(BUILD)

@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "day4/Day4.h"
+#include "day5/Day5.h"
 
 int main() {
-    Day4 day = Day4();
-    std::vector <std::string> lines = day.readFile();
+    Day5 day = Day5();
+    std::vector<std::string> lines = day.readFile();
 
-    std::cout << "Day " << day.m_dayNum << '\n';
+    std::cout << "Day " << day.getDay() << '\n';
 
     auto start = std::chrono::high_resolution_clock::now();
     int res1 = day.part1(lines);
