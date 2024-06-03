@@ -9,9 +9,21 @@ public:
 
     ~Day5() override;
 
-    int part1(std::vector<std::string> lines) override;
+    int part1() override;
 
-    int part2(std::vector<std::string> lines) override;
+    int part2() override;
+
+private:
+    static void parseFile(
+            const std::vector<std::string>& lines,
+            std::vector<long>& seeds,
+            std::vector<std::vector<std::array<long, 3>>>& maps
+    );
+
+    static long getSeedFromLocation(long location);
+
+    std::vector<long> m_seeds;
+    std::vector<std::vector<std::array<long, 3>>> m_maps;
 };
 
 #endif /* Day5_h */

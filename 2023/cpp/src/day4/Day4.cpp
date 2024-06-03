@@ -53,10 +53,10 @@ int getNumMatching(std::string& line) {
     return numMatching;
 }
 
-int Day4::part1(std::vector<std::string> lines) {
+int Day4::part1() {
     int sum = 0;
 
-    for (std::string& line: lines) {
+    for (std::string& line: m_lines) {
         int numWinningNumbers = getNumMatching(line);
         sum += numWinningNumbers > 0 ? static_cast<int>(std::pow(2, numWinningNumbers - 1)) : 0;
     }
@@ -64,13 +64,13 @@ int Day4::part1(std::vector<std::string> lines) {
     return sum;
 }
 
-int Day4::part2(std::vector<std::string> lines) {
-    int numLines = static_cast<int>(lines.size());
+int Day4::part2() {
+    int numLines = static_cast<int>(m_lines.size());
     std::vector<int> numCards(numLines);
     std::fill(numCards.begin(), numCards.end(), 1);
 
     for (int i = 0; i < numLines; i++) {
-        std::string& line = lines[i];
+        std::string& line = m_lines[i];
         int numMatching = getNumMatching(line);
 
         for (int j = i + 1; j < std::min(numLines, i + numMatching + 1); j++) {

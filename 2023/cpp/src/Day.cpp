@@ -5,29 +5,28 @@
 #include <string>
 #include <sstream>
 
-Day::Day(int dayNum, bool test) : m_test(test), m_dayNum(dayNum) {
+Day::Day(int dayNum, bool test) : m_dayNum(dayNum), m_test(test) {
     std::string testStr = m_test ? "test" : "";
     std::ostringstream oss;
     oss << "input/Day" << m_dayNum << testStr << ".txt";
     m_inputFile = oss.str();
+    readFile();
 }
 
-std::vector<std::string> Day::readFile() {
-    std::vector<std::string> lines;
+void Day::readFile() {
     std::ifstream file(m_inputFile);
 
     if (file.is_open()) {
         std::string line;
         while (std::getline(file, line)) {
-            lines.push_back(line);
+            m_lines.push_back(line);
         }
         file.close();
     } else {
         std::cout << "Unable to open file\n";
     }
-    return lines;
 }
 
-int Day::getDay() {
+int Day::getDay() const {
     return m_dayNum;
 }

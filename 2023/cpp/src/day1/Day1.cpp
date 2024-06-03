@@ -7,12 +7,10 @@ Day1::Day1() : Day(1, false) {};
 
 Day1::~Day1() = default;
 
-int Day1::part1(std::vector<std::string> lines) {
+int Day1::part1() {
     int sum = 0;
 
-    for (
-        std::string line: lines
-            ) {
+    for (std::string line: m_lines) {
         int val = 0;
 
         int lineLength = static_cast<int>(line.length());
@@ -42,14 +40,12 @@ int Day1::part1(std::vector<std::string> lines) {
     return sum;
 }
 
-int Day1::part2(std::vector<std::string> lines) {
+int Day1::part2() {
     int sum = 0;
     std::string nums[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     int numsLength = 10;
 
-    for (
-        std::string line: lines
-            ) {
+    for (const std::string& line: m_lines) {
         int val = 0;
 
         int lineLength = static_cast<int>(line.length());

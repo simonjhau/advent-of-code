@@ -10,21 +10,21 @@ public:
 
     virtual ~Day() = default;
 
-    virtual int part1(std::vector<std::string>) = 0;
+    virtual int part1() = 0;
 
-    virtual int part2(std::vector<std::string>) = 0;
+    virtual int part2() = 0;
 
-    std::vector<std::string> readFile();
-
-    int getDay();
+    [[nodiscard]] int getDay() const;
 
 protected:
-    std::string m_inputFile;
-    bool m_test = false;
+    std::vector<std::string> m_lines;
 
 private:
-    int m_dayNum;
+    void readFile();
 
+    int m_dayNum;
+    bool m_test = false;
+    std::string m_inputFile;
 };
 
 #endif //CPP_DAY_H

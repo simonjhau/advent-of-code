@@ -9,9 +9,9 @@ public:
 
     ~Day3() override;
 
-    int part1(std::vector<std::string> lines) override;
+    int part1() override;
 
-    int part2(std::vector<std::string> lines) override;
+    int part2() override;
 };
 
 #endif /* Day3_h */

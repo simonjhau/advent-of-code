@@ -19,15 +19,15 @@ void print(const std::vector<std::string>& strings) {
     std::cout << std::endl;
 }
 
-int Day2::part1(std::vector<std::string> lines) {
+int Day2::part1() {
     const int numRed = 12;
     const int numGreen = 13;
     const int numBlue = 14;
     int sum = 0;
 
-    for (const std::string& line: lines) {
+    for (const std::string& line: m_lines) {
         std::vector<std::string> gameSplit = split(line, ":");
-        const int gameIdx = std::atoi(split(gameSplit.at(0), " ").at(1).c_str());
+        const int gameIdx = std::stoi(split(gameSplit.at(0), " ").at(1));
         const std::string gameString = gameSplit.at(1);
         std::vector<std::string> rounds = split(gameString, ";");
 
@@ -42,25 +42,24 @@ int Day2::part1(std::vector<std::string> lines) {
             int blue = 0;
 
             std::string round = rounds.at(i);
-            std::vector<std::string> colours = split(round, ",");
+            std::vector<std::string> colours = split(round, ", ");
 
-            for (std::string& colourString: colours) {
-                trim(colourString);
+            for (const std::string& colourString: colours) {
                 std::vector<std::string> colour = split(colourString, " ");
                 if (0 == colour.at(1).compare("red")) {
-                    red += std::atoi(colour.at(0).c_str());
+                    red += std::stoi(colour.at(0));
                     if (red > numRed) {
                         possible = false;
                         break;
                     }
                 } else if (0 == colour.at(1).compare("green")) {
-                    green += std::atoi(colour.at(0).c_str());
+                    green += std::stoi(colour.at(0));
                     if (green > numGreen) {
                         possible = false;
                         break;
                     }
                 } else if (0 == colour.at(1).compare("blue")) {
-                    blue += std::atoi(colour.at(0).c_str());
+                    blue += std::stoi(colour.at(0));
                     if (blue > numBlue) {
                         possible = false;
                         break;
@@ -77,12 +76,10 @@ int Day2::part1(std::vector<std::string> lines) {
     return sum;
 }
 
-int Day2::part2(std::vector<std::string> lines) {
+int Day2::part2() {
     int sum = 0;
 
-    for (
-        std::string line: lines
-            ) {
+    for (const std::string& line: m_lines) {
         std::vector<std::string> gameSplit = split(line, ":");
         const std::string gameString = gameSplit.at(1);
         std::vector<std::string> rounds = split(gameString, ";");
@@ -92,24 +89,19 @@ int Day2::part2(std::vector<std::string> lines) {
         int maxBlue = 0;
 
         size_t numRounds = rounds.size();
-        for (
-                size_t i = 0; i < numRounds; i++
-                ) {
+        for (size_t i = 0; i < numRounds; i++) {
 
             std::string round = rounds.at(i);
-            std::vector<std::string> colours = split(round, ",");
+            std::vector<std::string> colours = split(round, ", ");
 
-            for (
-                std::string colourString: colours
-                    ) {
-                trim(colourString);
+            for (const std::string& colourString: colours) {
                 std::vector<std::string> colour = split(colourString, " ");
                 if (0 == colour.at(1).compare("red")) {
-                    maxRed = std::max(std::atoi(colour.at(0).c_str()), maxRed);
+                    maxRed = std::max(std::stoi(colour.at(0)), maxRed);
                 } else if (0 == colour.at(1).compare("green")) {
-                    maxGreen = std::max(std::atoi(colour.at(0).c_str()), maxGreen);
+                    maxGreen = std::max(std::stoi(colour.at(0)), maxGreen);
                 } else if (0 == colour.at(1).compare("blue")) {
-                    maxBlue = std::max(std::atoi(colour.at(0).c_str()), maxBlue);
+                    maxBlue = std::max(std::stoi(colour.at(0)), maxBlue);
                 }
             }
         }

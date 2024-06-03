@@ -12,9 +12,9 @@ public:
 
     ~Day1() override;
 
-    int part1(std::vector<std::string>) override;
+    int part1() override;
 
-    int part2(std::vector<std::string>) override;
+    int part2() override;
 };
 
 #endif /* Day1_h */

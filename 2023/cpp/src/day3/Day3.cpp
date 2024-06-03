@@ -31,7 +31,8 @@ bool adjacentToSymbol(const std::vector<std::string>& schematic, int r, int c) {
     return false;
 }
 
-int Day3::part1(std::vector<std::string> schematic) {
+int Day3::part1() {
+    const std::vector<std::string>& schematic = m_lines;
     int sum = 0;
 
     int numLines = static_cast<int>(schematic.size());
@@ -83,7 +84,8 @@ std::array<int, 2> adjacentToStar(const std::vector<std::string>& schematic, int
     return {-1, -1};
 }
 
-int Day3::part2(std::vector<std::string> schematic) {
+int Day3::part2() {
+    const std::vector<std::string>& schematic = m_lines;
     std::unordered_map<std::string, std::vector<int>> map;
 
     int numLines = static_cast<int>(schematic.size());
@@ -91,7 +93,7 @@ int Day3::part2(std::vector<std::string> schematic) {
     for (int i = 0; i < numLines; i++) {
         int num = 0;
         bool isAdjacentToStar = false;
-        std::array<int, 2> starPos;
+        std::array<int, 2> starPos = {};
 
         for (int j = 0; j < width; j++) {
             char c = schematic.at(i).at(j);
