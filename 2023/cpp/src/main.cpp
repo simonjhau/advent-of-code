@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "day5/Day5.h"
+#include "day6/Day6.h"
 
 int main() {
-    Day5 day = Day5();
+    Day6 day = Day6();
 
     std::cout << "Day " << day.getDay() << '\n';
 

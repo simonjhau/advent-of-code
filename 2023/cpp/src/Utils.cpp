@@ -1,6 +1,7 @@
 #include "Utils.h"
 
 #include <iostream>
+#include <sstream>
 
 std::vector<std::string> split(const std::string& s, const std::string& delimiter) {
     size_t pos_start = 0;
@@ -45,10 +46,29 @@ std::string& trim(std::string& s) {
     return s;
 }
 
-void printVector(const std::vector<std::string>& v) {
-    int numLines = static_cast<int>(v.size());
-    for (int i = 0; i < numLines; i++) {
-        std::cout << v.at(i) << ", ";
+std::vector<int> extractNumbers(const std::string& s) {
+    std::stringstream ss;
+    std::vector<int> res;
+
+    // Storing the whole string into string stream
+    ss << s;
+
+    // Running loop till the end of the stream
+    std::string temp;
+    int found;
+    while (!ss.eof()) {
+
+        // Extracting word by word from stream
+        ss >> temp;
+
+        // Checking the given word is integer or not
+        if (std::stringstream(temp) >> found) {
+            res.push_back(found);
+        }
+
+        // To save from space at the end of string
+        temp = "";
     }
-    std::cout << std::endl;
+
+    return res;
 }
