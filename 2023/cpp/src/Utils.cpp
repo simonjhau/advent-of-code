@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+#include <iostream>
+
 std::vector<std::string> split(const std::string& s, const std::string& delimiter) {
     size_t pos_start = 0;
     size_t pos_end;
@@ -41,4 +43,12 @@ std::string& trim(std::string& s) {
     rtrim(s);
     ltrim(s);
     return s;
+}
+
+void printVector(const std::vector<std::string>& v) {
+    int numLines = static_cast<int>(v.size());
+    for (int i = 0; i < numLines; i++) {
+        std::cout << v.at(i) << ", ";
+    }
+    std::cout << std::endl;
 }

@@ -3,13 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 
 Day::Day(int dayNum, bool test) : m_dayNum(dayNum), m_test(test) {
     std::string testStr = m_test ? "test" : "";
-    std::ostringstream oss;
-    oss << "input/Day" << m_dayNum << testStr << ".txt";
-    std::string inputFile = oss.str();
+    std::string inputFile = "input/Day" + std::to_string(m_dayNum) + testStr + ".txt";
     readFile(inputFile);
 }
 

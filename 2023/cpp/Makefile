@@ -11,9 +11,7 @@ SRC = src
 BUILD = build
 
 SRCS = $(shell find $(SRC) -name '*.cpp')
-
 BUILDOBJS = $(patsubst $(SRC)/%.cpp, $(BUILD)/%.o, $(SRCS))
-
 TARGET = $(BUILD)/app
 
 .PHONY: all debug release clean

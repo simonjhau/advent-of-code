@@ -11,14 +11,6 @@ Day2::Day2() : Day(2, false) {}
 
 Day2::~Day2() = default;
 
-void print(const std::vector<std::string>& strings) {
-    int numLines = static_cast<int>(strings.size());
-    for (int i = 0; i < numLines; i++) {
-        std::cout << strings.at(i) << ", ";
-    }
-    std::cout << std::endl;
-}
-
 int Day2::part1() {
     const int numRed = 12;
     const int numGreen = 13;

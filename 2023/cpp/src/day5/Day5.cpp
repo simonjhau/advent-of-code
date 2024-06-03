@@ -62,20 +62,40 @@ int Day5::part1() {
     return (int) lowestLocation;
 }
 
-static long getSeedForLocation(long location) {
-    long currentValue = location;
-    return currentValue;
+long Day5::getSeedForLocation(long location) {
+    long curValue = location;
+    for (const auto& map: m_maps) {
+        for (const auto& arr: map) {
+            if (curValue >= arr[0] && curValue < arr[0] + arr[2]) {
+                curValue = arr[1] + curValue - arr[0];
+                break;
+            }
+        }
+    }
+    return curValue;
 }
 
+bool Day5::seedInInitialRange(long seed, const std::vector<long>& initialSeeds) {
+    for (size_t i = 0; i < initialSeeds.size(); i += 2) {
+        if (seed >= initialSeeds[i] && seed <= initialSeeds[i] + initialSeeds[i + 1]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// To do - why is this so slow?
 int Day5::part2() {
+    // Reverse the maps
+    std::reverse(m_maps.begin(), m_maps.end());
+
     long location = 0;
-    while (1) {
+    while (true) {
         long seed = getSeedForLocation(location);
-        if (seedInInitialRange(seed, initialSeeds)) {
-            return location;
+        if (seedInInitialRange(seed, m_seeds)) {
+            break;
         }
         location++;
     }
-
-    return 0;
+    return static_cast<int>(location);
 }

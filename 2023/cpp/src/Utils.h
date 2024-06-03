@@ -8,4 +8,6 @@ std::vector<std::string> split(const std::string& s, const std::string& delimite
 
 std::string& trim(std::string& s);
 
+void printVector(const std::vector<std::string>& v);
+
 #endif //CPP_UTILS_H

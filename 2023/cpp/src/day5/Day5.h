@@ -20,7 +20,9 @@ private:
             std::vector<std::vector<std::array<long, 3>>>& maps
     );
 
-    static long getSeedFromLocation(long location);
+    long getSeedForLocation(long location);
+
+    bool seedInInitialRange(long seed, const std::vector<long>& initialSeeds);
 
     std::vector<long> m_seeds;
     std::vector<std::vector<std::array<long, 3>>> m_maps;
