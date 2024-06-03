@@ -17,9 +17,7 @@ bool adjacentToSymbol(const std::vector<std::string>& schematic, int r, int c) {
                                                       {1, -1}, {1, 0}, {1, 1}
                                               }};
 
-    for (
-        auto dir: dirs
-            ) {
+    for (auto dir: dirs) {
         int newR = std::min(std::max(r - dir[0], 0), (int) schematic.size() - 1);
         int newC = std::min(std::max(c - dir[1], 0), (int) schematic[0].size() - 1);
         char c = schematic.at(newR).at(newC);
@@ -70,9 +68,7 @@ std::array<int, 2> adjacentToStar(const std::vector<std::string>& schematic, int
                                                       {0, -1}, {0, 1},
                                                       {1, -1}, {1, 0}, {1, 1}}};
 
-    for (
-        auto dir: dirs
-            ) {
+    for (auto dir: dirs) {
         int newR = std::min(std::max(r - dir[0], 0), (int) schematic.size() - 1);
         int newC = std::min(std::max(c - dir[1], 0), (int) schematic[0].size() - 1);
         char c = schematic.at(newR).at(newC);

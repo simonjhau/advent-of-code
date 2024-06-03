@@ -34,9 +34,7 @@ int Day2::part1() {
         bool possible = true;
 
         size_t numRounds = rounds.size();
-        for (
-                size_t i = 0; i < numRounds && possible; i++
-                ) {
+        for (size_t i = 0; i < numRounds && possible; i++) {
             int red = 0;
             int green = 0;
             int blue = 0;

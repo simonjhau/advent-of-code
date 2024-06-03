@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int dayNumber = 3;
+        int dayNumber = 4;
         boolean test = false;
 
         System.out.printf("Day %s\n", dayNumber);
@@ -15,7 +15,7 @@ public class Main {
                 .readAllLines(Paths.get(inputFileName))
                 .toArray(new String[0]);
 
-        Day day = new Day3(lines);
+        Day day = new Day4(lines);
 
         long start = System.nanoTime();
         int part1 = day.part1();

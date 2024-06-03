@@ -20,11 +20,10 @@ protected:
     std::vector<std::string> m_lines;
 
 private:
-    void readFile();
+    void readFile(const std::string& inputFile);
 
     int m_dayNum;
     bool m_test = false;
-    std::string m_inputFile;
 };
 
 #endif //CPP_DAY_H

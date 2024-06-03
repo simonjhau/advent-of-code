@@ -62,14 +62,20 @@ int Day5::part1() {
     return (int) lowestLocation;
 }
 
-static long getSeedFromLocation(long location) {
+static long getSeedForLocation(long location) {
     long currentValue = location;
-
+    return currentValue;
 }
 
 int Day5::part2() {
-    std::vector<long> seeds;
-    std::vector<std::vector<std::array<long, 3>>> maps(NUM_MAPS);
+    long location = 0;
+    while (1) {
+        long seed = getSeedForLocation(location);
+        if (seedInInitialRange(seed, initialSeeds)) {
+            return location;
+        }
+        location++;
+    }
 
     return 0;
 }
