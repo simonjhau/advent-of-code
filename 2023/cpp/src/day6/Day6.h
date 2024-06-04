@@ -14,10 +14,7 @@ public:
     int part2() override;
 
 private:
-    void parseFile();
-
-    std::vector<int> m_times;
-    std::vector<int> m_distances;
+    static long getDistanceForHoldTime(int time, int holdTime);
 };
 
 #endif /* Day5_h */
