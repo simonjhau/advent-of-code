@@ -10,5 +10,5 @@ int Day8::part1() {
 }
 
 int Day8::part2() {
-    return 8;
+    return 2;
 }

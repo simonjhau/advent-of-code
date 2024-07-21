@@ -6,7 +6,7 @@
 #ifndef Day1_h
 #define Day1_h
 
-class Day1 : public Day {
+class Day1 final : public Day {
 public:
     Day1();
 

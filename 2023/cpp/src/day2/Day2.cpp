@@ -7,7 +7,8 @@
 
 #include "../Utils.h"
 
-Day2::Day2() : Day(2, false) {}
+Day2::Day2() : Day(2, false) {
+}
 
 Day2::~Day2() = default;
 
@@ -25,7 +26,7 @@ int Day2::part1() {
 
         bool possible = true;
 
-        size_t numRounds = rounds.size();
+        const size_t numRounds = rounds.size();
         for (size_t i = 0; i < numRounds && possible; i++) {
             int red = 0;
             int green = 0;
@@ -78,9 +79,8 @@ int Day2::part2() {
         int maxGreen = 0;
         int maxBlue = 0;
 
-        size_t numRounds = rounds.size();
+        const size_t numRounds = rounds.size();
         for (size_t i = 0; i < numRounds; i++) {
-
             std::string round = rounds.at(i);
             std::vector<std::string> colours = split(round, ", ");
 

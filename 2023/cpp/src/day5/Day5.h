@@ -3,7 +3,7 @@
 
 #include "../Day.h"
 
-class Day5 : public Day {
+class Day5 final : public Day {
 public:
     Day5();
 
@@ -15,9 +15,9 @@ public:
 
 private:
     static void parseFile(
-            const std::vector<std::string>& lines,
-            std::vector<long>& seeds,
-            std::vector<std::vector<std::array<long, 3>>>& maps
+        const std::vector<std::string>& lines,
+        std::vector<long>& seeds,
+        std::vector<std::vector<std::array<long, 3> > >& maps
     );
 
     long getSeedForLocation(long location);
@@ -25,7 +25,7 @@ private:
     bool seedInInitialRange(long seed, const std::vector<long>& initialSeeds);
 
     std::vector<long> m_seeds;
-    std::vector<std::vector<std::array<long, 3>>> m_maps;
+    std::vector<std::vector<std::array<long, 3> > > m_maps;
 };
 
 #endif /* Day5_h */

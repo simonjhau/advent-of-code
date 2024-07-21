@@ -3,11 +3,12 @@
 
 #include <algorithm>
 
-Day7::Day7() : Day(7, false) {};
+Day7::Day7() : Day(7, false) {
+};
 
 Day7::~Day7() = default;
 
-type_t Day7::getTypeFromCards(const std::string& cards, bool joker) {
+type_t Day7::getTypeFromCards(const std::string& cards, const bool joker) const {
     std::unordered_map<char, int> cardValues = joker ? m_cardValuesWeakJ : m_cardValues;
 
     // A K Q J T 9 8 7 6 5 4 3 2
@@ -63,17 +64,17 @@ type_t Day7::getTypeFromCards(const std::string& cards, bool joker) {
     return type;
 }
 
-handType_t Day7::transformLine(const std::string& line, bool joker) {
+handType_t Day7::transformLine(const std::string& line, const bool joker) const {
     std::vector<std::string> splitLine = split(line, " ");
     handType_t handType = {
-            splitLine[0],
-            std::stoi(splitLine[1]),
-            getTypeFromCards(splitLine[0], joker)
+        splitLine[0],
+        std::stoi(splitLine[1]),
+        getTypeFromCards(splitLine[0], joker)
     };
     return handType;
 }
 
-int Day7::sortHands(const handType_t& a, const handType_t& b, bool joker) {
+int Day7::sortHands(const handType_t& a, const handType_t& b, const bool joker) const {
     if (a.type != b.type) {
         return a.type < b.type;
     }
@@ -88,19 +89,18 @@ int Day7::sortHands(const handType_t& a, const handType_t& b, bool joker) {
     return 0;
 }
 
-int Day7::part(bool joker) {
-    int numHands = static_cast<int>(m_lines.size());
+int Day7::part(bool joker) const {
+    const int numHands = static_cast<int>(m_lines.size());
     std::vector<handType_t> hands(numHands);
-    std::transform(
-            m_lines.begin(),
-            m_lines.end(),
-            hands.begin(),
-            [this, joker](const std::string& line) { return transformLine(line, joker); }
+    std::ranges::transform(
+        m_lines,
+        hands.begin(),
+        [this, joker](const std::string& line) { return transformLine(line, joker); }
     );
     std::sort(
-            hands.begin(),
-            hands.end(),
-            [this, joker](const handType_t& a, const handType_t& b) { return sortHands(a, b, joker); }
+        hands.begin(),
+        hands.end(),
+        [this, joker](const handType_t& a, const handType_t& b) { return sortHands(a, b, joker); }
     );
 
     int sum = 0;

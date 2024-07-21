@@ -4,16 +4,14 @@
 #include <fstream>
 #include <string>
 
-Day::Day(int dayNum, bool test) : m_dayNum(dayNum), m_test(test) {
-    std::string testStr = m_test ? "test" : "";
-    std::string inputFile = "input/Day" + std::to_string(m_dayNum) + testStr + ".txt";
+Day::Day(const int dayNum, const bool test) : m_dayNum(dayNum), m_test(test) {
+    const std::string testStr = m_test ? "test" : "";
+    const std::string inputFile = "input/Day" + std::to_string(m_dayNum) + testStr + ".txt";
     readFile(inputFile);
 }
 
 void Day::readFile(const std::string& inputFile) {
-    std::ifstream file(inputFile);
-
-    if (file.is_open()) {
+    if (std::ifstream file(inputFile); file.is_open()) {
         std::string line;
         while (std::getline(file, line)) {
             m_lines.push_back(line);
