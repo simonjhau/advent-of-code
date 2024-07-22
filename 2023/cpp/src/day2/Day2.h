@@ -9,9 +9,9 @@ public:
 
     ~Day2() override;
 
-    int part1() override;
+    long part1() override;
 
-    int part2() override;
+    long part2() override;
 };
 
 

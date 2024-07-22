@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <regex>
 
 std::vector<std::string> split(const std::string& s, const std::string& delimiter);
 
@@ -18,5 +19,9 @@ void printVector(const std::vector<T>& v) {
 }
 
 std::vector<int> extractNumbers(const std::string& s);
+
+std::vector<std::string> extractMatches(const std::string& text, const std::regex& pattern);
+
+long lcmArray(const std::vector<long>& numbers);
 
 #endif //CPP_UTILS_H

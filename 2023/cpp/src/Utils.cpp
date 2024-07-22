@@ -1,7 +1,12 @@
 #include "Utils.h"
 
-#include <iostream>
+#include <numeric>
 #include <sstream>
+
+static long gcd(long a, long b);
+
+static long lcm(long a, long b);
+
 
 std::vector<std::string> split(const std::string& s, const std::string& delimiter) {
     size_t pos_start = 0;
@@ -76,4 +81,35 @@ std::vector<int> extractNumbers(const std::string& s) {
     }
 
     return res;
+}
+
+std::vector<std::string> extractMatches(const std::string& text, const std::regex& pattern) {
+    std::vector<std::string> matches;
+    std::smatch match;
+    auto searchStart(text.cbegin());
+
+    while (std::regex_search(searchStart, text.cend(), match, pattern)) {
+        matches.push_back(match.str(0));
+        searchStart = match.suffix().first;
+    }
+    return matches;
+}
+
+// Function to compute GCD using Euclidean algorithm
+long gcd(long a, long b) {
+    while (b != 0) {
+        const long temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+// Function to compute LCM of two integers
+long lcm(const long a, const long b) {
+    return std::abs(a * b) / gcd(a, b);
+}
+
+long lcmArray(const std::vector<long>& numbers) {
+    return std::accumulate(numbers.begin(), numbers.end(), 1L, lcm);
 }

@@ -13,9 +13,9 @@ Day5::Day5() : Day(5, false) {
 Day5::~Day5() = default;
 
 void Day5::parseFile(
-        const std::vector<std::string>& lines,
-        std::vector<long>& seeds,
-        std::vector<std::vector<std::array<long, 3>>>& maps
+    const std::vector<std::string>& lines,
+    std::vector<long>& seeds,
+    std::vector<std::vector<std::array<long, 3> > >& maps
 ) {
     int mapIndex = -1;
     for (const std::string& line: lines) {
@@ -32,17 +32,17 @@ void Day5::parseFile(
         } else {
             std::vector<std::string> mapString = split(line, " ");
             maps.at(mapIndex).push_back(
-                    {
-                            std::stol(mapString.at(0)),
-                            std::stol(mapString.at(1)),
-                            std::stol(mapString.at(2))
-                    }
+                {
+                    std::stol(mapString.at(0)),
+                    std::stol(mapString.at(1)),
+                    std::stol(mapString.at(2))
+                }
             );
         }
     }
 }
 
-int Day5::part1() {
+long Day5::part1() {
     long lowestLocation = INT_MAX;
     long curValue;
     for (long seed: m_seeds) {
@@ -85,7 +85,7 @@ bool Day5::seedInInitialRange(long seed, const std::vector<long>& initialSeeds) 
 }
 
 // To do - why is this so slow?
-int Day5::part2() {
+long Day5::part2() {
     // Reverse the maps
     std::reverse(m_maps.begin(), m_maps.end());
 

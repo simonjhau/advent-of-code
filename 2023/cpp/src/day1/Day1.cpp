@@ -8,7 +8,7 @@ Day1::Day1() : Day(1, false) {
 
 Day1::~Day1() = default;
 
-int Day1::part1() {
+long Day1::part1() {
     int sum = 0;
 
     for (std::string line: m_lines) {
@@ -35,12 +35,12 @@ int Day1::part1() {
     return sum;
 }
 
-int Day1::part2() {
+long Day1::part2() {
     int sum = 0;
     const std::string nums[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
     for (const std::string& line: m_lines) {
-        const int numsLength = 10;
+        constexpr int numsLength = 10;
         int val = 0;
 
         const int lineLength = static_cast<int>(line.length());

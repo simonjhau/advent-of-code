@@ -32,7 +32,7 @@ bool adjacentToSymbol(const std::vector<std::string>& schematic, const int r, co
     return false;
 }
 
-int Day3::part1() {
+long Day3::part1() {
     const std::vector<std::string>& schematic = m_lines;
     int sum = 0;
 
@@ -86,7 +86,7 @@ std::array<int, 2> adjacentToStar(const std::vector<std::string>& schematic, int
     return {-1, -1};
 }
 
-int Day3::part2() {
+long Day3::part2() {
     const std::vector<std::string>& schematic = m_lines;
     std::unordered_map<std::string, std::vector<int> > map;
 

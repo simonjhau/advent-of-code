@@ -7,7 +7,8 @@
 #include <vector>
 #include <numeric>
 
-Day4::Day4() : Day(4, false) {};
+Day4::Day4() : Day(4, false) {
+};
 
 Day4::~Day4() = default;
 
@@ -53,7 +54,7 @@ int getNumMatching(std::string& line) {
     return numMatching;
 }
 
-int Day4::part1() {
+long Day4::part1() {
     int sum = 0;
 
     for (std::string& line: m_lines) {
@@ -64,7 +65,7 @@ int Day4::part1() {
     return sum;
 }
 
-int Day4::part2() {
+long Day4::part2() {
     int numLines = static_cast<int>(m_lines.size());
     std::vector<int> numCards(numLines);
     std::fill(numCards.begin(), numCards.end(), 1);

@@ -1,7 +1,8 @@
 #include "Day6.h"
 #include "../Utils.h"
 
-Day6::Day6() : Day(6, false) {};
+Day6::Day6() : Day(6, false) {
+};
 
 Day6::~Day6() = default;
 
@@ -9,7 +10,7 @@ long Day6::getDistanceForHoldTime(int time, int holdTime) {
     return (long) holdTime * (time - holdTime);
 }
 
-int Day6::part1() {
+long Day6::part1() {
     std::vector<int> times = extractNumbers(m_lines[0]);
     std::vector<int> distances = extractNumbers(m_lines[1]);
     int numRaces = static_cast<int>(times.size());
@@ -27,7 +28,7 @@ int Day6::part1() {
     return multiply;
 }
 
-int Day6::part2() {
+long Day6::part2() {
     std::string timeStr;
     for (char c: m_lines[0]) {
         if (isnumber(c)) {

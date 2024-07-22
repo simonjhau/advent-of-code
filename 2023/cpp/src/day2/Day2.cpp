@@ -12,7 +12,7 @@ Day2::Day2() : Day(2, false) {
 
 Day2::~Day2() = default;
 
-int Day2::part1() {
+long Day2::part1() {
     const int numRed = 12;
     const int numGreen = 13;
     const int numBlue = 14;
@@ -67,7 +67,7 @@ int Day2::part1() {
     return sum;
 }
 
-int Day2::part2() {
+long Day2::part2() {
     int sum = 0;
 
     for (const std::string& line: m_lines) {

@@ -4,7 +4,7 @@
 #include <algorithm>
 
 Day7::Day7() : Day(7, false) {
-};
+}
 
 Day7::~Day7() = default;
 
@@ -110,10 +110,10 @@ int Day7::part(bool joker) const {
     return sum;
 }
 
-int Day7::part1() {
+long Day7::part1() {
     return part(false);
 }
 
-int Day7::part2() {
+long Day7::part2() {
     return part(true);
 }

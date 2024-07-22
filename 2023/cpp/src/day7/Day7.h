@@ -25,9 +25,9 @@ public:
 
     ~Day7() override;
 
-    int part1() override;
+    long part1() override;
 
-    int part2() override;
+    long part2() override;
 
 private:
     std::unordered_map<char, int> m_cardValues = {
