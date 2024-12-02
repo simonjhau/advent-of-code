@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "day8/Day8.h"
+#include "day9/Day9.h"
 
 int main() {
-    auto day = Day8();
+    auto day = Day9();
 
     std::cout << "Day " << day.getDay() << '\n';
 
